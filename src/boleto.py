@@ -41,8 +41,8 @@ dump_folder = f'{path}\\dump'
 output_folder = f'{os.getcwd()}\\COMPROVANTES\\SEPARADOS'
 
 for file in os.listdir(path):
-    if file == 'dump':
-        break
+    if os.path.isdir(os.path.join(path,file)):
+        continue
     pdf_pages = convert_from_path(f'{path}\\{file}', poppler_path='src/poppler-24.07.0/Library/bin', output_folder=dump_folder, fmt='jpg')
 
 sleep(3)

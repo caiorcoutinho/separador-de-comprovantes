@@ -35,8 +35,8 @@ dump_folder = f'{path}/dump'
 output_folder = f'{os.getcwd()}/COMPROVANTES/SEPARADOS'
 
 for file in os.listdir(path):
-    if file == 'dump':
-        break
+    if os.path.isdir(os.path.join(path,file)):
+        continue
     pdf_pages = convert_from_path(f'{path}/{file}', poppler_path='src/poppler-24.07.0/Library/bin', output_folder=dump_folder, fmt='jpg')
 
 sleep(3)
@@ -58,5 +58,5 @@ for item in os.listdir(dump_folder):
     while os.path.exists(output_path + ".pdf"):
         output_path = output_filename + f'_{c}'
         c += 1        
-
+        
     pdf.save(output_path + '.pdf')
