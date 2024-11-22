@@ -27,6 +27,12 @@ def get_data(image):
     data = {'name': name, 'value': value}
     return data
 
+def clean_data(data):
+    data = data.replace('|', '')
+    data = data.replace('/', '')
+    data = data.replace('\\', '')
+    data = data.replace('\n', '')
+    return data
 
 path = f'{os.getcwd()}/COMPROVANTES/TED'
 
@@ -45,8 +51,8 @@ for item in os.listdir(dump_folder):
     
     img_path = f'{dump_folder}\\{item}'
     data = get_data(img_path)
-    name = data['name']
-    value = data['value']
+    name = clean_data(data['name'])
+    value = clean_data(data['value'])
 
     pdf = Image.open(img_path)
     output_filename = f'{output_folder}\\TED_{name}_{value}'

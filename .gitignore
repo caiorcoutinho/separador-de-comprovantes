@@ -1,4 +1,5 @@
 # Byte-compiled / optimized / DLL files
+src/__pycache__
 __pycache__/
 *.py[cod]
 *$py.class
@@ -156,7 +157,9 @@ cython_debug/
 
 # garbage and private data
 COMPROVANTES/PIX/dump/*
+COMPROVANTES/PIX/*.pdf
 COMPROVANTES/TED/dump/*
 COMPROVANTES/TED/*.pdf
 COMPROVANTES/BOLETO/dump/*
+COMPROVANTES/BOLETO/*.pdf
 COMPROVANTES/SEPARADOS/*

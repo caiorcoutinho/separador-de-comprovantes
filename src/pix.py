@@ -33,6 +33,13 @@ def get_data(image):
     data = {'name': name, 'value': value, 'desc': desc}
     return data
 
+def clean_data(data):
+    data = data.replace('|', '')
+    data = data.replace('/', '')
+    data = data.replace('\\', '')
+    data = data.replace('\n', '')
+    return data
+
 
 path = f'{os.getcwd()}/COMPROVANTES/PIX'
 
@@ -51,9 +58,9 @@ for item in os.listdir(dump_folder):
     
     img_path = f'{dump_folder}\\{item}'
     data = get_data(img_path)
-    name = data['name']
-    value = data['value']
-    desc = data['desc']
+    name = clean_data(data['name'])
+    value = clean_data(data['value'])
+    desc = clean_data(data['desc'])
 
     pdf = Image.open(img_path)
     output_filename = f'{output_folder}\\PIX_{name}_{value}_{desc}'
